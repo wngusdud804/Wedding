@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="-60 -60 120 120">
+<defs>
+  <filter id="s" x="-50%" y="-50%" width="200%" height="200%">
+    <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#4A3110" flood-opacity="0.42"/>
+  </filter>
+</defs>
+<g filter="url(#s)">
+  <path d="M0.00,-40.00 L11.76,-16.18 L38.04,-12.36 L19.02,6.18 L23.51,32.36 L0.00,20.00 L-23.51,32.36 L-19.02,6.18 L-38.04,-12.36 L-11.76,-16.18 Z" fill="#FFFCF2" stroke="#FFFCF2" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M0.00,-40.00 L11.76,-16.18 L38.04,-12.36 L19.02,6.18 L23.51,32.36 L0.00,20.00 L-23.51,32.36 L-19.02,6.18 L-38.04,-12.36 L-11.76,-16.18 Z" fill="#FFC93C" stroke="#2A7BA8" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M0.00,-18.00 L5.29,-7.28 L17.12,-5.56 L8.56,2.78 L10.58,14.56 L0.00,9.00 L-10.58,14.56 L-8.56,2.78 L-17.12,-5.56 L-5.29,-7.28 Z" fill="#FFE9A8" opacity="0.6"/>
+</g>
+</svg>

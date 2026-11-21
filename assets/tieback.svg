@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="120" viewBox="0 0 150 120">
+<defs>
+  <linearGradient id="sb" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#EAF6FD"/><stop offset=".45" stop-color="#BEDFF2"/><stop offset="1" stop-color="#7FB6D6"/>
+  </linearGradient>
+  <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFE7A6"/><stop offset="1" stop-color="#EBBF4E"/>
+  </linearGradient>
+  <filter id="s" x="-30%" y="-30%" width="170%" height="180%">
+    <feDropShadow dx="0" dy="4" stdDeviation="3.2" flood-color="#3E2809" flood-opacity="0.42"/>
+  </filter>
+</defs>
+<g filter="url(#s)">
+  <g fill="#FFFCF2" stroke="#FFFCF2" stroke-width="17" stroke-linejoin="round">
+    <path d="M100,52 C 118,60 128,76 130,94 C 120,94 108,82 100,66 Z"/><path d="M100,48 C 112,62 116,84 112,104 C 104,99 96,80 92,60 Z"/><path d="M-6,40 C 24,33 64,36 100,46 L 100,68 C 64,58 24,55 -6,62 Z"/><path d="M88,42 H104 A 10,10 0 0 1 104,62 H88 A 10,10 0 0 1 88,42 Z"/>
+  </g>
+  <path d="M100,52 C 118,60 128,76 130,94 C 120,94 108,82 100,66 Z" fill="url(#sb)" stroke="#2A7BA8" stroke-width="4.2" stroke-linejoin="round"/>
+  <path d="M100,48 C 112,62 116,84 112,104 C 104,99 96,80 92,60 Z" fill="url(#sb)" stroke="#2A7BA8" stroke-width="4.2" stroke-linejoin="round"/>
+  <path d="M-6,40 C 24,33 64,36 100,46 L 100,68 C 64,58 24,55 -6,62 Z" fill="url(#sb)" stroke="#2A7BA8" stroke-width="4.6" stroke-linejoin="round"/>
+  <path d="M-6,46 C 24,40 64,42 99,52" fill="none" stroke="#FFFFFF" stroke-opacity=".75" stroke-width="3"/>
+  <path d="M88,42 H104 A 10,10 0 0 1 104,62 H88 A 10,10 0 0 1 88,42 Z" fill="url(#sg)" stroke="#B48A2E" stroke-width="4"/>
+  <path d="M96,44 C 104,50 104,56 96,60" fill="none" stroke="#B48A2E" stroke-opacity=".55" stroke-width="2.4"/>
+</g>
+</svg>
