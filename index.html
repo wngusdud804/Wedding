@@ -122,72 +122,10 @@ h1,h2,h3,p,figure{margin:0}
   animation:bob 2.4s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
 
-/* curtain */
+/* curtain : 양쪽 커튼이 각자의 허리에서 리본으로 묶여 있는 드레이프 */
 .curtain{position:absolute;inset:0;z-index:4;pointer-events:none}
-/* 좌우 커튼: 허리에서 끈으로 묶인 드레이프 실루엣(clipPath) */
-.pwrap{position:absolute;top:-1px;bottom:-1px;left:0;width:68%;will-change:transform;
-  transform:translate3d(0,0,0);transform-origin:0 0}
-.pwrap.right{left:auto;right:0;transform-origin:100% 0}
-.panel{position:absolute;inset:0;pointer-events:none;
-  -webkit-clip-path:url(#tieClipL);clip-path:url(#tieClipL);
-  filter:drop-shadow(0 8px 12px rgba(38,24,10,.42)) drop-shadow(0 26px 40px rgba(38,24,10,.30));
-  background-repeat:no-repeat,no-repeat,repeat,no-repeat;
-  background-size:100% 100%,100% 100%,158px 158px,cover;
-  background-position:0 0,0 0,0 0,center;
-  --fold:linear-gradient(90deg,
-      rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 6%,
-      rgba(88,60,22,.36) 16%,rgba(255,255,255,.22) 26%,
-      rgba(88,60,22,.14) 36%,rgba(255,255,255,.28) 45%,
-      rgba(88,60,22,.20) 55%,rgba(255,255,255,.24) 64%,
-      rgba(88,60,22,.34) 74%,rgba(255,255,255,.18) 84%,
-      rgba(86,58,20,.30) 92%,rgba(46,28,6,.52) 100%);
-  background-image:
-    linear-gradient(180deg,rgba(72,48,16,.30) 0%,rgba(72,48,16,0) 10%,rgba(72,48,16,0) 82%,rgba(56,34,8,.36) 100%),
-    var(--fold),
-    url("assets/star-tile.svg"),
-    url("assets/web/fabric.webp");
-}
-/* 묶인 허리의 모임 그림자 */
-.panel::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(58% 26% at 100% 50%,rgba(64,40,10,.34),rgba(64,40,10,0) 70%),
-    radial-gradient(70% 18% at 100% 32%,rgba(255,255,255,.20),rgba(255,255,255,0) 70%),
-    radial-gradient(70% 18% at 100% 70%,rgba(255,255,255,.16),rgba(255,255,255,0) 70%);
-  mix-blend-mode:multiply}
-.panel.right{-webkit-clip-path:url(#tieClipR);clip-path:url(#tieClipR);
-  --fold:linear-gradient(270deg,
-      rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 6%,
-      rgba(88,60,22,.36) 16%,rgba(255,255,255,.22) 26%,
-      rgba(88,60,22,.14) 36%,rgba(255,255,255,.28) 45%,
-      rgba(88,60,22,.20) 55%,rgba(255,255,255,.24) 64%,
-      rgba(88,60,22,.34) 74%,rgba(255,255,255,.18) 84%,
-      rgba(86,58,20,.30) 92%,rgba(46,28,6,.52) 100%);
-  background-image:
-    linear-gradient(180deg,rgba(72,48,16,.30) 0%,rgba(72,48,16,0) 10%,rgba(72,48,16,0) 82%,rgba(56,34,8,.36) 100%),
-    var(--fold),
-    url("assets/star-tile.svg"),
-    url("assets/web/fabric.webp");
-  background-position:0 0,0 0,-96px 44px,center;
-}
-.panel.right::before{background:
-    radial-gradient(58% 26% at 0% 50%,rgba(64,40,10,.34),rgba(64,40,10,0) 70%),
-    radial-gradient(70% 18% at 0% 32%,rgba(255,255,255,.20),rgba(255,255,255,0) 70%),
-    radial-gradient(70% 18% at 0% 70%,rgba(255,255,255,.16),rgba(255,255,255,0) 70%)}
-/* 자락 끝의 얇은 아이보리 + 스카이 파이핑 */
-.panel .edge{position:absolute;inset:0;width:100%;height:100%}
-.panel .edge path{fill:none;stroke-linejoin:round;stroke-linecap:round}
-.panel .edge .e1{stroke:#FFFBEE;stroke-width:6}
-.panel .edge .e2{stroke:#2A7BA8;stroke-opacity:.5;stroke-width:1.5}
-/* 묶음 끈 */
-.pwrap .tie{position:absolute;top:50%;width:128px;height:auto;pointer-events:none;
-  filter:drop-shadow(0 6px 10px rgba(40,26,12,.34)) drop-shadow(0 2px 3px rgba(40,26,12,.28))}
-.pwrap.left .tie{left:73.5%;transform:translate(-64%,-50%)}
-.pwrap.right .tie{left:26.5%;transform:translate(-36%,-50%) scaleX(-1)}
-.valance{position:absolute;left:0;right:0;top:0;z-index:5;pointer-events:none;line-height:0;
-  filter:drop-shadow(0 7px 8px rgba(38,24,10,.42)) drop-shadow(0 22px 30px rgba(38,24,10,.30));
-  transition:transform 1.25s cubic-bezier(.32,.72,.2,1),opacity 1.05s ease}
-.cover.open .valance{transform:translate3d(0,-104%,0);opacity:0}
-.valance svg{width:100%;height:auto;display:block}
+.curtain svg{display:block;width:100%;height:100%;overflow:visible}
+.curtain .cv-panel{will-change:transform}
 
 .curtain-tap{position:absolute;inset:0;z-index:6;pointer-events:auto;cursor:pointer}
 .cover.open .curtain-tap{pointer-events:none}
@@ -507,42 +445,9 @@ section{position:relative;padding:70px 0 10px}
     <p class="hero-venue">부천 세이브존 라비에벨</p>
   </div>
 
-  <div class="curtain" id="curtain">
-    <div class="pwrap left" id="wrapL">
-      <div class="panel left" id="panelL">
-        <svg class="edge" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true">
-          <path class="e1" vector-effect="non-scaling-stroke"
-                d="M0.88,0 C0.845,0.13 0.772,0.33 0.735,0.5 C0.772,0.67 0.845,0.87 0.88,1"/>
-          <path class="e2" vector-effect="non-scaling-stroke"
-                d="M0.866,0 C0.831,0.13 0.758,0.33 0.721,0.5 C0.758,0.67 0.831,0.87 0.866,1"/>
-        </svg>
-      </div>
-      <img class="tie" src="assets/tieback.svg" alt="" aria-hidden="true">
-    </div>
-    <div class="pwrap right" id="wrapR">
-      <div class="panel right" id="panelR">
-        <svg class="edge" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true">
-          <path class="e1" vector-effect="non-scaling-stroke"
-                d="M0.12,0 C0.155,0.13 0.228,0.33 0.265,0.5 C0.228,0.67 0.155,0.87 0.12,1"/>
-          <path class="e2" vector-effect="non-scaling-stroke"
-                d="M0.134,0 C0.169,0.13 0.242,0.33 0.279,0.5 C0.242,0.67 0.169,0.87 0.134,1"/>
-        </svg>
-      </div>
-      <img class="tie" src="assets/tieback.svg" alt="" aria-hidden="true">
-    </div>
-    <div class="valance" id="valance"></div>
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <svg id="curtainSvg" viewBox="0 0 390 844" preserveAspectRatio="none"></svg>
   </div>
-
-  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-    <defs>
-      <clipPath id="tieClipL" clipPathUnits="objectBoundingBox">
-        <path d="M0,0 H0.88 C0.845,0.13 0.772,0.33 0.735,0.5 C0.772,0.67 0.845,0.87 0.88,1 H0 Z"/>
-      </clipPath>
-      <clipPath id="tieClipR" clipPathUnits="objectBoundingBox">
-        <path d="M1,0 H0.12 C0.155,0.13 0.228,0.33 0.265,0.5 C0.228,0.67 0.155,0.87 0.12,1 H1 Z"/>
-      </clipPath>
-    </defs>
-  </svg>
 
   <button class="curtain-tap" id="curtainTap" aria-label="커튼 열기"></button>
 
@@ -884,79 +789,6 @@ section{position:relative;padding:70px 0 10px}
 
 <div class="toast" id="toast"></div>
 
-<!-- valance svg (inlined so it can use the pattern images) -->
-<script>
-/* ── curtain valance: built here so its patterns resolve relative to the page ── */
-(function(){
-  const stars = `
-  <g transform="translate(42,44) rotate(-9)">
-    <path d="M0.00,-30.00 L8.82,-12.14 L28.53,-9.27 L14.27,4.64 L17.63,24.27 L0.00,15.00 L-17.63,24.27 L-14.27,4.64 L-28.53,-9.27 L-8.82,-12.14 Z" fill="#FFFCF2" filter="url(#sh)"/>
-    <path d="M0.00,-25.00 L7.35,-10.11 L23.78,-7.73 L11.89,3.86 L14.69,20.23 L0.00,12.50 L-14.69,20.23 L-11.89,3.86 L-23.78,-7.73 L-7.35,-10.11 Z" fill="#FFC93C" stroke="#2A7BA8" stroke-width="4.60" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M0.00,-11.50 L3.38,-4.65 L10.94,-3.55 L5.47,1.78 L6.76,9.30 L0.00,5.75 L-6.76,9.30 L-5.47,1.78 L-10.94,-3.55 L-3.38,-4.65 Z" fill="#FFE9A8" opacity=".62"/>
-  </g>
-  <g transform="translate(126,96) rotate(12)">
-    <path d="M0.00,-20.40 L6.00,-8.25 L19.40,-6.31 L9.70,3.15 L11.98,16.50 L0.00,10.20 L-11.98,16.50 L-9.70,3.15 L-19.40,-6.31 L-6.00,-8.25 Z" fill="#FFFCF2" filter="url(#sh)"/>
-    <path d="M0.00,-17.00 L5.00,-6.88 L16.17,-5.26 L8.08,2.63 L9.99,13.75 L0.00,8.50 L-9.99,13.75 L-8.08,2.63 L-16.17,-5.26 L-5.00,-6.88 Z" fill="#FFC93C" stroke="#2A7BA8" stroke-width="3.40" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M0.00,-7.82 L2.30,-3.16 L7.44,-2.42 L3.72,1.21 L4.60,6.33 L0.00,3.91 L-4.60,6.33 L-3.72,1.21 L-7.44,-2.42 L-2.30,-3.16 Z" fill="#FFE9A8" opacity=".62"/>
-  </g>
-  <g transform="translate(54,126) rotate(21)">
-    <path d="M0.00,-13.80 L4.06,-5.59 L13.12,-4.27 L6.56,2.13 L8.10,11.16 L0.00,6.90 L-8.10,11.16 L-6.56,2.13 L-13.12,-4.27 L-4.06,-5.59 Z" fill="#FFFCF2" filter="url(#sh)"/>
-    <path d="M0.00,-11.50 L3.38,-4.65 L10.94,-3.55 L5.47,1.78 L6.76,9.30 L0.00,5.75 L-6.76,9.30 L-5.47,1.78 L-10.94,-3.55 L-3.38,-4.65 Z" fill="#FFC93C" stroke="#2A7BA8" stroke-width="2.40" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M0.00,-5.29 L1.55,-2.14 L5.03,-1.63 L2.52,0.82 L3.11,4.28 L0.00,2.65 L-3.11,4.28 L-2.52,0.82 L-5.03,-1.63 L-1.55,-2.14 Z" fill="#FFE9A8" opacity=".62"/>
-  </g>
-  <g transform="translate(134,152) rotate(-4)">
-    <path d="M0.00,-16.80 L4.94,-6.80 L15.98,-5.19 L7.99,2.59 L9.87,13.59 L0.00,8.40 L-9.87,13.59 L-7.99,2.59 L-15.98,-5.19 L-4.94,-6.80 Z" fill="#FFFCF2" filter="url(#sh)"/>
-    <path d="M0.00,-14.00 L4.12,-5.66 L13.32,-4.33 L6.66,2.16 L8.23,11.33 L0.00,7.00 L-8.23,11.33 L-6.66,2.16 L-13.32,-4.33 L-4.12,-5.66 Z" fill="#FFC93C" stroke="#2A7BA8" stroke-width="2.80" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M0.00,-6.44 L1.89,-2.60 L6.12,-1.98 L3.06,0.99 L3.78,5.21 L0.00,3.22 L-3.78,5.21 L-3.06,0.99 L-6.12,-1.98 L-1.89,-2.60 Z" fill="#FFE9A8" opacity=".62"/>
-  </g>`;
-  const svg = `
-  <svg viewBox="0 0 1000 410" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <pattern id="fab" patternUnits="userSpaceOnUse" width="900" height="900">
-        <image href="assets/web/fabric.webp" width="900" height="900" preserveAspectRatio="xMidYMid slice"/>
-      </pattern>
-      <pattern id="stars" patternUnits="userSpaceOnUse" width="170" height="170"
-               patternTransform="scale(1.7)">${stars}</pattern>
-      <pattern id="stars2" patternUnits="userSpaceOnUse" width="150" height="150"
-               patternTransform="scale(1.5)">${stars}</pattern>
-      <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#A9853F" stop-opacity=".6"/>
-        <stop offset=".22" stop-color="#FFFFFF" stop-opacity="0"/>
-        <stop offset=".66" stop-color="#FFFFFF" stop-opacity="0"/>
-        <stop offset="1" stop-color="#7E5C22" stop-opacity=".5"/>
-      </linearGradient>
-      <filter id="drop" x="-8%" y="-8%" width="116%" height="140%">
-        <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#4A3210" flood-opacity="0.52"/>
-      </filter>
-      <filter id="drop2" x="-8%" y="-8%" width="116%" height="145%">
-        <feDropShadow dx="0" dy="13" stdDeviation="13" flood-color="#3A2608" flood-opacity="0.55"/>
-      </filter>
-      <filter id="sh" x="-45%" y="-45%" width="190%" height="190%">
-        <feDropShadow dx="0" dy="2.4" stdDeviation="1.6" flood-color="#6B4E1E" flood-opacity="0.46"/>
-      </filter>
-    </defs>
-    <!-- back tier : 한 겹 더 깔린 커튼 -->
-    <g filter="url(#drop)">
-      <path id="vb" fill="#E3CFA8"/>
-      <path id="vb2" fill="url(#fab)"/>
-      <path id="vb3" fill="url(#stars2)" opacity=".8"/>
-      <path id="vb4" fill="url(#shade)"/>
-      <path id="vb5" fill="none" stroke="#6B4A18" stroke-opacity=".30" stroke-width="9" stroke-linejoin="round"/>
-    </g>
-    <!-- front tier -->
-    <g filter="url(#drop2)">
-      <path id="vg" fill="#EFE1C6"/>
-      <path id="vg2" fill="url(#fab)"/>
-      <path id="vg3" fill="url(#stars)"/>
-      <path id="vg4" fill="url(#shade)"/>
-      <path id="vg5" fill="none" stroke="#FFFCF2" stroke-width="18" stroke-linejoin="round"/>
-      <path id="vg5b" fill="none" stroke="#2A7BA8" stroke-width="5" stroke-linejoin="round" transform="translate(0,-13)"/>
-    </g>
-    <path id="vg6" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2"/>
-  </svg>`;
-  document.getElementById('valance').innerHTML = svg;
-})();
-</script>
 <script>
 /* ══════════════════════════════════════════════════════════
    pop-up book invitation — behaviour
@@ -966,47 +798,285 @@ section{position:relative;padding:70px 0 10px}
   const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
   const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 
-  /* ── valance geometry ── */
-  (function valance(){
-    const set=(id,d)=>{const el=document.getElementById(id); if(el) el.setAttribute('d',d);};
-    const W=1000;
-    const build=(base,dip,sc)=>{
-      const hem=x=>{const t=(x-W/2)/(W/2); return base+dip*Math.pow(1-t*t,.85);};
-      let d=`M0,0 H${W} V${hem(W-1).toFixed(1)}`;
-      let x=W-1;
-      while(x>sc){const x0=x,x1=x-sc;const y0=hem(x0),y1=hem(x1);
-        d+=`C${x0.toFixed(1)},${(y0+sc*.9).toFixed(1)} ${x1.toFixed(1)},${(y1+sc*.9).toFixed(1)} ${x1.toFixed(1)},${y1.toFixed(1)}`;
+  /* ══════════════════════════════════════════════════════════
+     curtain — 좌우 두 짝이 각자의 허리에서 리본으로 묶인 드레이프.
+     닫히면 화면을 가리고, 열리면 묶인 채 좌우로 빠져나간다.
+     ══════════════════════════════════════════════════════════ */
+  const CURTAIN=(function(){
+    const coverEl=$('#cover'), svg=$('#curtainSvg');
+    if(!coverEl||!svg) return {layout:function(){},paint:function(){}};
+    const lerp=(a,b,t)=>a+(b-a)*t;
+    const q=id=>svg.querySelector('#'+id);
+    let W=390,H=844,lastT=0;
+
+    svg.innerHTML=`<defs>
+  <pattern id="cvFabricP" patternUnits="userSpaceOnUse" width="760" height="760">
+    <image href="assets/web/fabric.webp" width="760" height="760" preserveAspectRatio="xMidYMid slice"/>
+  </pattern>
+  <pattern id="cvStarP" patternUnits="userSpaceOnUse" width="172" height="172">
+    <image href="assets/star-tile.svg" width="172" height="172"/>
+  </pattern>
+  <linearGradient id="cvPleatG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#6E4E1C" stop-opacity=".46"/>
+    <stop offset=".09" stop-color="#FFF9E8" stop-opacity=".62"/>
+    <stop offset=".22" stop-color="#7A5A2A" stop-opacity=".14"/>
+    <stop offset=".37" stop-color="#FFF9E8" stop-opacity=".34"/>
+    <stop offset=".50" stop-color="#6E4E1C" stop-opacity=".38"/>
+    <stop offset=".64" stop-color="#FFF9E8" stop-opacity=".48"/>
+    <stop offset=".80" stop-color="#7A5A2A" stop-opacity=".16"/>
+    <stop offset="1" stop-color="#6E4E1C" stop-opacity=".46"/>
+  </linearGradient>
+  <pattern id="cvPleatP" patternUnits="userSpaceOnUse" width="60" height="26">
+    <rect width="60" height="26" fill="url(#cvPleatG)"/>
+  </pattern>
+  <linearGradient id="cvFadeG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5A3C12" stop-opacity=".28"/>
+    <stop offset=".09" stop-color="#5A3C12" stop-opacity="0"/>
+    <stop offset=".88" stop-color="#5A3C12" stop-opacity="0"/>
+    <stop offset="1" stop-color="#3E2608" stop-opacity=".26"/>
+  </linearGradient>
+  <radialGradient id="cvNeckG" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="150">
+    <stop offset="0" stop-color="#4A3210" stop-opacity=".34"/>
+    <stop offset=".5" stop-color="#4A3210" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#4A3210" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="cvCreaseG" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="250">
+    <stop offset="0" stop-color="#3A2408" stop-opacity=".44"/>
+    <stop offset=".30" stop-color="#3A2408" stop-opacity=".16"/>
+    <stop offset="1" stop-color="#3A2408" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="cvGlowG" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="250">
+    <stop offset="0" stop-color="#FFFDF2" stop-opacity=".60"/>
+    <stop offset=".30" stop-color="#FFFDF2" stop-opacity=".22"/>
+    <stop offset="1" stop-color="#FFFDF2" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="cvSashG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#DDF0FB"/>
+    <stop offset=".30" stop-color="#A9D2EA"/>
+    <stop offset=".72" stop-color="#7FB4D4"/>
+    <stop offset="1" stop-color="#6398BC"/>
+  </linearGradient>
+  <linearGradient id="cvValShadeG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5A3C12" stop-opacity=".34"/>
+    <stop offset=".55" stop-color="#5A3C12" stop-opacity="0"/>
+    <stop offset="1" stop-color="#3E2608" stop-opacity=".20"/>
+  </linearGradient>
+  <clipPath id="cvClipP"><path id="cvClipD"/></clipPath>
+  <filter id="cvPanelSh" x="-12%" y="-6%" width="124%" height="122%">
+    <feDropShadow dx="0" dy="14" stdDeviation="11" flood-color="#34200A" flood-opacity=".46"/>
+  </filter>
+  <radialGradient id="cvSeatG" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="78">
+    <stop offset="0" stop-color="#3A2408" stop-opacity=".24"/>
+    <stop offset=".5" stop-color="#3A2408" stop-opacity=".10"/>
+    <stop offset="1" stop-color="#3A2408" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="cvSoft" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="5"/></filter>
+  <filter id="cvTieSh" x="-45%" y="-45%" width="190%" height="200%">
+    <feDropShadow dx="0" dy="5" stdDeviation="4.5" flood-color="#3E2809" flood-opacity=".46"/>
+  </filter>
+  <filter id="cvValSh" x="-8%" y="-8%" width="116%" height="150%">
+    <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#3A2608" flood-opacity=".48"/>
+  </filter>
+</defs>
+<g id="cvPL"></g><g id="cvPR"></g><g id="cvVal"></g>`;
+
+    const panelHTML=`<g class="cv-panel" filter="url(#cvPanelSh)">
+      <path class="cv-fab" fill="url(#cvFabricP)"/>
+      <path class="cv-star" fill="url(#cvStarP)"/>
+      <path class="cv-fade" fill="url(#cvFadeG)"/>
+      <g clip-path="url(#cvClipP)">
+        <path class="cv-pleat" fill="url(#cvPleatP)" style="mix-blend-mode:multiply"/>
+        <ellipse class="cv-neck" fill="url(#cvNeckG)" style="mix-blend-mode:multiply"/>
+        <g class="cv-flD" fill="url(#cvCreaseG)" filter="url(#cvSoft)" style="mix-blend-mode:multiply"></g>
+        <g class="cv-flL" fill="url(#cvGlowG)" filter="url(#cvSoft)"></g>
+        <g class="cv-tight" fill="none" stroke="url(#cvCreaseG)" stroke-linecap="round" style="mix-blend-mode:multiply"></g>
+
+      </g>
+      <path class="cv-seam" fill="none" stroke="#3A2408" stroke-opacity=".16" stroke-width="30" filter="url(#cvSoft)" style="mix-blend-mode:multiply"/>
+      <path class="cv-e1" fill="none" stroke="#FFFBEE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="cv-e2" fill="none" stroke="#2A7BA8" stroke-opacity=".45" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <g clip-path="url(#cvClipP)">
+        <path class="cv-cinchD" fill="none" stroke="url(#cvCreaseG)" stroke-linecap="round" style="mix-blend-mode:multiply"/>
+        <path class="cv-cinchL" fill="none" stroke="url(#cvGlowG)" stroke-linecap="round"/>
+      </g>
+      <g filter="url(#cvTieSh)">
+        <image class="cv-bow" href="assets/bow.svg" width="88" height="66"/>
+      </g>
+    </g>`;
+    q('cvPL').innerHTML=panelHTML;
+    q('cvPR').innerHTML=panelHTML;
+
+    q('cvVal').innerHTML=`<g class="cv-vb" filter="url(#cvValSh)">
+        <path fill="#DCC49B"/><path fill="url(#cvFabricP)"/><path fill="url(#cvStarP)" opacity=".82"/><path fill="url(#cvPleatP)" opacity=".5" style="mix-blend-mode:multiply"/>
+        <path class="cv-vshade" fill="url(#cvValShadeG)"/>
+        <path fill="none" stroke="#6B4A18" stroke-opacity=".26" stroke-width="8" stroke-linejoin="round"/>
+      </g><g class="cv-vf" filter="url(#cvValSh)">
+        <path fill="#EFE1C6"/><path fill="url(#cvFabricP)"/><path fill="url(#cvStarP)"/><path fill="url(#cvPleatP)" opacity=".55" style="mix-blend-mode:multiply"/>
+        <path class="cv-vshade" fill="url(#cvValShadeG)"/>
+        <path fill="none" stroke="#FFFCF2" stroke-width="12" stroke-linejoin="round"/>
+        <path class="cv-vsky" fill="none" stroke="#2A7BA8" stroke-opacity=".85" stroke-width="4.6" stroke-linejoin="round" transform="translate(0,-8)"/>
+        <path class="cv-vhi" fill="none" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="2"/>
+      </g>`;
+
+    function parts(g){
+      return {
+        fab:g.querySelector('.cv-fab'), star:g.querySelector('.cv-star'), fade:g.querySelector('.cv-fade'),
+        pleat:g.querySelector('.cv-pleat'), neck:g.querySelector('.cv-neck'),
+        flD:g.querySelector('.cv-flD'), flL:g.querySelector('.cv-flL'),
+        tight:g.querySelector('.cv-tight'), seam:g.querySelector('.cv-seam'),
+        e1:g.querySelector('.cv-e1'), e2:g.querySelector('.cv-e2'),
+        cinchD:g.querySelector('.cv-cinchD'), cinchL:g.querySelector('.cv-cinchL'),
+        bow:g.querySelector('.cv-bow')
+      };
+    }
+    const PL=parts(q('cvPL')), PR=parts(q('cvPR'));
+
+    /* ── valance (두 겹 스웨그) ── */
+    function valanceD(base,dip,sc){
+      const hem=x=>{const t=Math.min(1,Math.max(-1,(x-W/2)/(W/2))); return base+dip*Math.pow(Math.max(0,1-t*t),.82);};
+      let d=`M-4,-6 L${W+4},-6 L${W+4},${hem(W+4).toFixed(1)}`;
+      let x=W+2;
+      while(x-sc>-2){const x0=x,x1=x-sc;const y0=hem(x0),y1=hem(x1);
+        d+=`C${x0.toFixed(1)},${(y0+sc*.95).toFixed(1)} ${x1.toFixed(1)},${(y1+sc*.95).toFixed(1)} ${x1.toFixed(1)},${y1.toFixed(1)}`;
         x=x1;}
-      d+=`C0,${(hem(1)+sc).toFixed(1)} 0,${hem(0).toFixed(1)} 0,${hem(0).toFixed(1)} V0 Z`;
+      d+=`C0,${(hem(0)+sc).toFixed(1)} 0,${hem(0).toFixed(1)} 0,${hem(0).toFixed(1)} L-4,-6 Z`;
       let line='';
-      for(let i=0;i<=80;i++){const lx=i*(W/80);const t=(lx-500)/500;
-        const y=base+dip*Math.pow(1-t*t,.85)-6;
-        line+=(i?'L':'M')+lx.toFixed(1)+','+y.toFixed(1);}
+      for(let i=0;i<=90;i++){const lx=-4+i*((W+8)/90);const t=Math.min(1,Math.max(-1,(lx-W/2)/(W/2)));
+        line+=(i?'L':'M')+lx.toFixed(1)+','+(base+dip*Math.pow(Math.max(0,1-t*t),.82)-7).toFixed(1);}
       return {d,line};
-    };
-    /* front tier */
-    const front=build(186,96,36);
-    ['vg','vg2','vg3','vg4','vg5','vg5b'].forEach(id=>set(id,front.d));
-    set('vg6',front.line);
-    /* back tier: 42px lower, slightly different wave → 겹친 두 겹 자락 */
-    const back=build(228,92,32);
-    ['vb','vb2','vb3','vb4','vb5'].forEach(id=>set(id,back.d));
+    }
+    function buildValance(){
+      const front=valanceD(126,96,34), back=valanceD(178,104,28);
+      q('cvVal').querySelectorAll('.cv-vb path').forEach(p=>p.setAttribute('d',back.d));
+      q('cvVal').querySelectorAll('.cv-vf path').forEach(p=>p.setAttribute('d',front.d));
+      q('cvVal').querySelector('.cv-vhi').setAttribute('d',front.line);
+    }
+
+    /* ── 패널 실루엣 ── */
+    function panelPaths(t){
+      const yW=H*0.455, y0=-10, y1=H+10;
+      const xT=lerp(0.520,-0.035,t)*W;
+      const xW=lerp(0.524,-0.150,t)*W;
+      const xB=lerp(0.531,-0.040,t)*W;
+      const xO=lerp(-0.05,-0.10,t)*W;
+      const tx=(xW*0.545);
+      let edge=`C${(xT+(xW-xT)*0.16).toFixed(1)},${(y0+(yW-y0)*0.56).toFixed(1)} `
+              +`${(xW+(xT-xW)*0.05).toFixed(1)},${(yW-(yW-y0)*0.05).toFixed(1)} `
+              +`${xW.toFixed(1)},${yW.toFixed(1)}`;
+      edge+=`C${(xW+(xB-xW)*0.16).toFixed(1)},${(yW+(y1-yW)*0.30).toFixed(1)} `
+           +`${(xB-(xB-xW)*0.28).toFixed(1)},${(y1-(y1-yW)*0.26).toFixed(1)} `
+           +`${xB.toFixed(1)},${y1.toFixed(1)}`;
+      const fill=`M${xO.toFixed(1)},${y0} L${xT.toFixed(1)},${y0} ${edge} L${xO.toFixed(1)},${y1} Z`;
+      const line=`M${xT.toFixed(1)},${y0} ${edge}`;
+      return {fill,line,tx,yW,xT,xB,xW,xO};
+    }
+
+    function creaseD(tx,ty,side,len,spread){
+      const out=[];
+      const ks=[[-1,.9],[-.62,1.25],[-.2,.8],[.26,1.1],[.66,.85],[1,.7]];
+      ks.forEach(kk=>{
+        const k=kk[0], w=kk[1];
+        const sx=tx+k*12, sy=ty+side*18;
+        const ex=tx+k*spread*(1+0.22*Math.abs(k));
+        const ey=side<0?-14:H+14;
+        const cx=tx+k*(spread*0.10), cy=ty+side*len*0.62;
+        out.push({d:`M${sx.toFixed(1)},${sy.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`,w});
+      });
+      return out;
+    }
+
+    function foldWedges(tx,ty){
+      const dark=[], light=[];
+      const up=[[-0.92,-0.55],[-0.28,0.16],[0.44,0.92]];
+      const dn=[[-1.02,-0.62],[-0.20,0.30],[0.52,1.05]];
+      up.forEach(pair=>{
+        const a=tx+pair[0]*W*0.30, b=tx+pair[1]*W*0.30;
+        dark.push(`M${tx.toFixed(1)},${(ty-6).toFixed(1)} L${a.toFixed(1)},-14 L${b.toFixed(1)},-14 Z`);
+      });
+      dn.forEach(pair=>{
+        const a=tx+pair[0]*W*0.36, b=tx+pair[1]*W*0.36;
+        dark.push(`M${tx.toFixed(1)},${(ty+6).toFixed(1)} L${a.toFixed(1)},${H+14} L${b.toFixed(1)},${H+14} Z`);
+      });
+      const lig=[[-0.70,-0.40],[-0.05,0.32],[0.62,0.98]];
+      lig.forEach(pair=>{
+        const a=tx+pair[0]*W*0.30, b=tx+pair[1]*W*0.30;
+        light.push(`M${tx.toFixed(1)},${(ty-8).toFixed(1)} L${a.toFixed(1)},-14 L${b.toFixed(1)},-14 Z`);
+        const c=tx+pair[0]*W*0.36, d=tx+pair[1]*W*0.36;
+        light.push(`M${tx.toFixed(1)},${(ty+8).toFixed(1)} L${c.toFixed(1)},${H+14} L${d.toFixed(1)},${H+14} Z`);
+      });
+      return {dark,light};
+    }
+
+    function paint(t){
+      lastT=Math.max(0,Math.min(1,t));
+      const g=panelPaths(lastT);
+      const wsv=Math.max(0,Math.min(1,1-(lastT-0.78)/0.22));
+      [PL,PR].forEach(p=>{
+        [p.fab,p.star,p.fade,p.pleat].forEach(el=>el.setAttribute('d',g.fill));
+        p.e1.setAttribute('d',g.line); p.e2.setAttribute('d',g.line); p.seam.setAttribute('d',g.line);
+        p.seam.setAttribute('stroke-opacity',(0.30*Math.max(0,1-lastT*3)).toFixed(3));
+        p.seam.setAttribute('transform',`translate(${(-9).toFixed(1)},0)`);
+        p.neck.setAttribute('cx',g.tx.toFixed(1));
+        p.neck.setAttribute('cy',g.yW.toFixed(1));
+        p.neck.setAttribute('rx',(W*0.27).toFixed(1));
+        p.neck.setAttribute('ry',(H*0.12).toFixed(1));
+        /* 주름: 허리에서 위아래로 부챗살처럼 퍼지는 결 */
+        const up=creaseD(g.tx,g.yW-4,-1,H*0.26,W*0.31);
+        const dn=creaseD(g.tx,g.yW-4, 1,H*0.30,W*0.40);
+        const all=up.concat(dn);
+        /* 넓고 부드러운 접힘면 */
+        const wedges=foldWedges(g.tx,g.yW-4);
+        p.flD.innerHTML=wedges.dark.map(d=>`<path d="${d}"/>`).join('');
+        p.flL.innerHTML=wedges.light.map(d=>`<path d="${d}"/>`).join('');
+        const ew=(3.0+4.4*lastT).toFixed(2);
+        p.e1.setAttribute('stroke-width',ew);
+        p.e1.setAttribute('stroke-opacity',(0.62+0.38*lastT).toFixed(3));
+        p.e2.setAttribute('stroke-opacity',(0.16+0.30*lastT).toFixed(3));
+        /* 매듭: 허리를 옥죄는 잔주름 + 리본 */
+        const ty=g.yW-4, tx=g.tx;
+        const tight=[];
+        [-1,-0.52,0,0.52,1].forEach(k=>{
+          tight.push(`M${(tx+k*19).toFixed(1)},${(ty-12).toFixed(1)} Q${(tx+k*27).toFixed(1)},${(ty-64).toFixed(1)} ${(tx+k*36).toFixed(1)},${(ty-116).toFixed(1)}`);
+          tight.push(`M${(tx+k*20).toFixed(1)},${(ty+14).toFixed(1)} Q${(tx+k*28).toFixed(1)},${(ty+70).toFixed(1)} ${(tx+k*38).toFixed(1)},${(ty+124).toFixed(1)}`);
+        });
+        p.tight.innerHTML=tight.map(d=>`<path d="${d}" stroke-width="${(wsv*7+0.01).toFixed(2)}" stroke-opacity=".55"/>`).join('');
+
+        const strip=Math.max(0,g.xW-g.xO);
+        const bs=Math.max(0.42,Math.min(1,strip/170));
+        p.bow.setAttribute('width',(88*bs).toFixed(1));
+        p.bow.setAttribute('height',(66*bs).toFixed(1));
+        p.bow.setAttribute('x',(tx-44*bs).toFixed(1));
+        p.bow.setAttribute('y',(ty-24.2*bs).toFixed(1));
+      });
+      q('cvNeckG').setAttribute('cx',g.tx.toFixed(1)); q('cvNeckG').setAttribute('cy',g.yW.toFixed(1));
+      q('cvNeckG').setAttribute('r',(W*0.30).toFixed(1));
+      q('cvCreaseG').setAttribute('cx',g.tx.toFixed(1)); q('cvCreaseG').setAttribute('cy',g.yW.toFixed(1));
+      q('cvGlowG').setAttribute('cx',g.tx.toFixed(1)); q('cvGlowG').setAttribute('cy',g.yW.toFixed(1));
+      q('cvClipD').setAttribute('d',g.fill);
+      const rot=(2.9*lastT).toFixed(2);
+      q('cvPL').setAttribute('transform',`rotate(${rot},0,0)`);
+      q('cvPR').setAttribute('transform',`translate(${W},0) scale(-1,1) rotate(${rot},0,0)`);
+      q('cvVal').setAttribute('transform',`translate(0,${(-lastT*H*0.36).toFixed(1)})`);
+      svg.style.visibility = lastT>0.995 ? 'hidden' : 'visible';
+      coverEl.style.setProperty('--open',lastT.toFixed(3));
+    }
+
+    function layout(){
+      W=coverEl.clientWidth||390;
+      H=coverEl.clientHeight||844;
+      svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+      buildValance();
+      paint(lastT);
+    }
+
+    return {layout:layout, paint:paint, state:function(){return lastT;}};
   })();
 
-  const cover=$('#cover'), pl=$('#wrapL'), pr=$('#wrapR'), ties=$$('.tie');
+  const cover=$('#cover');
   const tap=$('#curtainTap');
   /* ── curtain opening: starts fully closed (open = 0) ── */
   let open=0, opened=false, opening=false, raf=null;
-  function paint(){
-    const W=cover.clientWidth||390;
-    const travel=W*0.72;
-    const swing=(2.8*open).toFixed(2);
-    pl.style.transform=`translate3d(${(-open*travel).toFixed(2)}px,0,0) rotate(-${swing}deg)`;
-    pr.style.transform=`translate3d(${(open*travel).toFixed(2)}px,0,0) rotate(${swing}deg)`;
-    const tieFade=clamp(1-open*1.7);
-    ties.forEach(t=>{t.style.opacity=tieFade.toFixed(3);});
-    cover.style.setProperty('--open',open.toFixed(3));
-  }
+  function paint(){ CURTAIN.paint(open); }
   function lock(on){
     document.documentElement.classList.toggle('lock',on);
   }
@@ -1043,7 +1113,7 @@ section{position:relative;padding:70px 0 10px}
   });
   tap.addEventListener('click',function(e){ requestOpen(e); bgmStart(); });
 
-  function relayout(){ paint(); }
+  function relayout(){ CURTAIN.layout(); paint(); }
   window.addEventListener('resize',relayout);
   window.addEventListener('orientationchange',()=>setTimeout(relayout,200));
   relayout();
