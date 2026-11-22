@@ -890,6 +890,9 @@ section{position:relative;padding:70px 0 10px}
         <g class="cv-flD" fill="url(#cvCreaseG)" filter="url(#cvSoft)" style="mix-blend-mode:multiply"></g>
         <g class="cv-flL" fill="url(#cvGlowG)" filter="url(#cvSoft)"></g>
         <g class="cv-tight" fill="none" stroke="url(#cvCreaseG)" stroke-linecap="round" style="mix-blend-mode:multiply"></g>
+        <g class="cv-bunch" filter="url(#cvSoft)" style="mix-blend-mode:multiply">
+          <ellipse fill="#4A3210" fill-opacity=".13"/><ellipse fill="#4A3210" fill-opacity=".13"/>
+        </g>
 
       </g>
       <path class="cv-seam" fill="none" stroke="#3A2408" stroke-opacity=".16" stroke-width="30" filter="url(#cvSoft)" style="mix-blend-mode:multiply"/>
@@ -924,6 +927,7 @@ section{position:relative;padding:70px 0 10px}
         pleat:g.querySelector('.cv-pleat'), neck:g.querySelector('.cv-neck'),
         flD:g.querySelector('.cv-flD'), flL:g.querySelector('.cv-flL'),
         tight:g.querySelector('.cv-tight'), seam:g.querySelector('.cv-seam'),
+        bunch:g.querySelectorAll('.cv-bunch ellipse'),
         e1:g.querySelector('.cv-e1'), e2:g.querySelector('.cv-e2'),
         cinchD:g.querySelector('.cv-cinchD'), cinchL:g.querySelector('.cv-cinchL'),
         bow:g.querySelector('.cv-bow')
@@ -1039,6 +1043,9 @@ section{position:relative;padding:70px 0 10px}
           tight.push(`M${(tx+k*19).toFixed(1)},${(ty-12).toFixed(1)} Q${(tx+k*27).toFixed(1)},${(ty-64).toFixed(1)} ${(tx+k*36).toFixed(1)},${(ty-116).toFixed(1)}`);
           tight.push(`M${(tx+k*20).toFixed(1)},${(ty+14).toFixed(1)} Q${(tx+k*28).toFixed(1)},${(ty+70).toFixed(1)} ${(tx+k*38).toFixed(1)},${(ty+124).toFixed(1)}`);
         });
+        const bx=[tx-W*0.055,tx+W*0.055];
+        p.bunch.forEach((el,i)=>{el.setAttribute('cx',bx[i].toFixed(1)); el.setAttribute('cy',ty.toFixed(1));
+          el.setAttribute('rx',(W*0.033).toFixed(1)); el.setAttribute('ry',(H*0.105).toFixed(1));});
         p.tight.innerHTML=tight.map(d=>`<path d="${d}" stroke-width="${(wsv*7+0.01).toFixed(2)}" stroke-opacity=".55"/>`).join('');
 
         const strip=Math.max(0,g.xW-g.xO);
